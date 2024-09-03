@@ -20,7 +20,11 @@ export const Navbar = () => {
           <div
             className={`w-auto p-4 px-6 md:show bg-grey rounded-full flex items-center justify-between`}
           >
-            <input type="text" placeholder="Search" className="bg-grey border-0 outline-none" />
+            <input
+              type="text"
+              placeholder="Search"
+              className="bg-grey border-0 outline-none"
+            />
             <span className="material-symbols-outlined md:pointer-events-none text-2xl text-dark-grey">
               search
             </span>
@@ -36,9 +40,14 @@ export const Navbar = () => {
               </span>
               <p>write</p>
             </Link>
-            <Link href={"/auth/login"} className={`btn-dark py-2`}>
-              SignIn
-            </Link>
+            <div className="flex gap-2">
+              <Link href={"/admin/auth/login"} className={`btn-dark py-2`}>
+                Login
+              </Link>
+              <Link href={"/admin/auth/register"} className={`btn-light py-2`}>
+                Register
+              </Link>
+            </div>
           </div>
         </div>
       </div>
