@@ -54,14 +54,17 @@ export const AuthFormComponent = ({ formType }: AuthFormProps) => {
         {formType == "login" ? (
           <p className="mt-6 text-dark-grey text-xl text-center">
             Don&apos;t have an account?{" "}
-            <Link href={"/auth/register"} className="underline text-xl ml-1">
+            <Link
+              href={`/auth/register?redirect=${redirectPath || "/"}`}
+              className="underline text-xl ml-1"
+            >
               Register
             </Link>
           </p>
         ) : (
           <p className="mt-6 text-dark-grey text-xl text-center">
             Already have an account?{" "}
-            <Link href={"/auth/login"} className="underline text-xl ml-1">
+            <Link href={`/auth/login?redirect=${redirectPath || "/"}`} className="underline text-xl ml-1">
               Login
             </Link>
           </p>
