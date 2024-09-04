@@ -5,10 +5,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+const navbarOptions = [
+  { label: "Home", href: "/" },
+  { label: "Blogs", href: "/blogs" },
+];
+
 export const NavbarComponent = () => {
   const pathname = usePathname();
   const isBlogPage = pathname.startsWith("/blogs");
   const isEditorPage = pathname.startsWith("/editor");
+
+  const filteredNavbarOptions = navbarOptions.filter((option) => {
+    console.log("is blog page", isBlogPage);
+    if (isBlogPage) {
+      return option.label != "Blogs";
+    }
+    return true;
+  });
 
   return (
     <nav className="navbar">
@@ -16,7 +29,19 @@ export const NavbarComponent = () => {
         <Link href={"/"}>
           <Image src={logo} alt="Logo" className="flex-none" width={40} />
         </Link>
-        <div className={`${isEditorPage ? 'hidden' : 'flex'} gap-6`}>
+        <div
+          className={`hidden ${isEditorPage ? "" : "md:flex"} gap-6 text-black`}
+        >
+          {filteredNavbarOptions.map((option, idx) => {
+            const key = `key-${idx}`;
+            return (
+              <Link href={option.href} key={key}>
+                <p className="hover:underline text-2xl">{option.label}</p>
+              </Link>
+            );
+          })}
+        </div>
+        <div className={`${isEditorPage ? "hidden" : "flex"} gap-6`}>
           <div
             className={`${
               isBlogPage ? "flex" : "hidden"
