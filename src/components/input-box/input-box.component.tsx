@@ -9,7 +9,7 @@ interface InputBoxProps {
   icon?: string;
 }
 
-export const InputBox = ({ type, icon, ...inputBoxProps }: InputBoxProps) => {
+export const InputBoxComponent = ({ type, icon, ...inputBoxProps }: InputBoxProps) => {
   const [passwordVisibility, setPasswordVisility] = useState(false);
 
   const togglePasswordVisibility = () => {

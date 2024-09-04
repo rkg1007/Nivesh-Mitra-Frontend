@@ -1,13 +1,18 @@
+"use client";
+
 import Image from "next/image";
-import { InputBox } from "../input-box/InputBox";
+import { InputBoxComponent } from "../input-box/input-box.component";
 import google from "@/assests/google.png";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 interface AuthFormProps {
   formType: "login" | "register";
 }
 
-export const AuthForm = ({ formType }: AuthFormProps) => {
+export const AuthFormComponent = ({ formType }: AuthFormProps) => {
+  const queryParams = useSearchParams();
+  const redirectPath = queryParams.get("redirect") || "/";
   return (
     <section className="h-cover flex items-center justify-center">
       <form className="w-[80%] max-w-[400px]">
@@ -15,7 +20,7 @@ export const AuthForm = ({ formType }: AuthFormProps) => {
           {formType == "login" ? "welcome back" : "join us today"}
         </h1>
         {formType == "register" ? (
-          <InputBox
+          <InputBoxComponent
             type="text"
             name="fullName"
             placeholder="Full Name"
@@ -24,8 +29,13 @@ export const AuthForm = ({ formType }: AuthFormProps) => {
         ) : (
           <></>
         )}
-        <InputBox type="email" name="email" placeholder="Email" icon="mail" />
-        <InputBox
+        <InputBoxComponent
+          type="email"
+          name="email"
+          placeholder="Email"
+          icon="mail"
+        />
+        <InputBoxComponent
           type="password"
           name="password"
           placeholder="Password"
@@ -44,21 +54,24 @@ export const AuthForm = ({ formType }: AuthFormProps) => {
         {formType == "login" ? (
           <p className="mt-6 text-dark-grey text-xl text-center">
             Don&apos;t have an account?{" "}
-            <Link
-              href={"/admin/auth/register"}
-              className="underline text-xl ml-1"
-            >
+            <Link href={"/auth/register"} className="underline text-xl ml-1">
               Register
             </Link>
           </p>
         ) : (
           <p className="mt-6 text-dark-grey text-xl text-center">
             Already have an account?{" "}
-            <Link href={"/admin/auth/login"} className="underline text-xl ml-1">
+            <Link href={"/auth/login"} className="underline text-xl ml-1">
               Login
             </Link>
           </p>
         )}
+        <p className="text-dark-grey text-xl text-center">
+          Want to go back?{" "}
+          <Link href={redirectPath} className="underline text-xl ml-1">
+            Click Here
+          </Link>
+        </p>
       </form>
     </section>
   );
