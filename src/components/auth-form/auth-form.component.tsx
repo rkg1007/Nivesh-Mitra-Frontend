@@ -52,7 +52,7 @@ export const AuthFormComponent = ({ formType }: AuthFormProps) => {
           Continue With Google
         </button>
         {formType == "login" ? (
-          <p className="mt-6 text-dark-grey text-xl text-center">
+          <p className="hidden mt-6 text-dark-grey text-xl text-center">
             Don&apos;t have an account?{" "}
             <Link
               href={`/auth/register?redirect=${redirectPath || "/"}`}
@@ -62,14 +62,14 @@ export const AuthFormComponent = ({ formType }: AuthFormProps) => {
             </Link>
           </p>
         ) : (
-          <p className="mt-6 text-dark-grey text-xl text-center">
+          <p className="hidden mt-6 text-dark-grey text-xl text-center">
             Already have an account?{" "}
             <Link href={`/auth/login?redirect=${redirectPath || "/"}`} className="underline text-xl ml-1">
               Login
             </Link>
           </p>
         )}
-        <p className="text-dark-grey text-xl text-center">
+        <p className="text-dark-grey mt-6 text-xl text-center">
           Want to go back?{" "}
           <Link href={redirectPath} className="underline text-xl ml-1">
             Click Here

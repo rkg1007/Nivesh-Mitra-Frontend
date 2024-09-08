@@ -60,7 +60,7 @@ export const NavbarComponent = () => {
               </Link>
               <Link
                 href={`/auth/register?redirect=${redirectPath}`}
-                className={`btn-light py-2`}
+                className={`hidden btn-light py-2`}
               >
                 Register
               </Link>
