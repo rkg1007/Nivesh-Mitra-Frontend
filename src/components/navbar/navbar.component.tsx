@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import logo from "@/assests/logo.png";
 import Image from "next/image";
@@ -20,9 +20,19 @@ export const NavbarComponent = () => {
   return (
     <nav className="navbar">
       <div className="flex items-center gap-6 justify-between w-full right-0">
-        <Link href={"/"}>
-          <Image src={logo} alt="Logo" className="flex-none" width={40} />
-        </Link>
+        <div className="flex items-center gap-6">
+          <Link href={"/"}>
+            <Image src={logo} alt="Logo" className="flex-none" width={40} />
+          </Link>
+        </div>
+        <div
+          className={`${
+            isEditorPage ? "flex" : "hidden"
+          } items-center gap-3 md:gap-6 ml-auto`}
+        >
+          <button className={`btn-dark py-2`}>Publish</button>
+          <button className={`btn-light py-2`}>Save as Draft</button>
+        </div>
         <div className={`hidden ${isEditorPage ? "" : "md:flex"} gap-6`}>
           {navbarOptions.map((option, idx) => {
             const key = `key-${idx}`;
