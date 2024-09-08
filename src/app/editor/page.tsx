@@ -6,7 +6,7 @@ import { useState } from "react";
 const BlogEditor = () => {
   const [blogEditorState, _] = useState<
     "editor" | "publishForm"
-  >("editor");
+  >("publishForm");
 
   if (blogEditorState == "editor") {
     return <EditorComponent />;
