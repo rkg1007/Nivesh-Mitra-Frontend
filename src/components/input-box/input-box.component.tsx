@@ -7,6 +7,8 @@ interface InputBoxProps {
   name?: string;
   placeholder?: string;
   icon?: string;
+  value?: string;
+  onChange?: (e: any) => void
 }
 
 export const InputBoxComponent = ({ type, icon, ...inputBoxProps }: InputBoxProps) => {
